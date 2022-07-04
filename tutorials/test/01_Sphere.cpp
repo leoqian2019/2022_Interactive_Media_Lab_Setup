@@ -147,5 +147,3 @@ int main() {
 SphereApp app;
 app.start();
 }
-
-// test changes
