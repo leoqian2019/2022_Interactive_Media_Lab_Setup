@@ -565,3 +565,5 @@ build/.cmake/api/v1/reply/target-ui_tabs-Debug-5e30a56cb3e9ba19f296.json
 build/.cmake/api/v1/reply/toolchains-v1-87dc393b9be757c1e320.json
 
 build/.cmake/api/v1/query/client-vscode/query.json
+tutorials/vectorField/bin/*
+tutorials/vectorField/build/*
