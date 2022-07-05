@@ -56,7 +56,7 @@ void onAnimate(double dt) {
     
 
     auto frames = pipe.wait_for_frames();
-    std::cout << frames.get_color_frame().get_width() << std::endl;
+    // std::cout << frames.get_color_frame().get_width() << std::endl;
 
     auto color = frames.get_color_frame();
 
@@ -84,19 +84,19 @@ void onAnimate(double dt) {
     auto tex_coords = points.get_texture_coordinates(); // and texture coordinates
     
     // configure textture
-    tex.destroy();
-    tex.create2D(width,height);
-    tex.filterMag(Texture::LINEAR);
+    // tex.destroy();
+    // tex.create2D(width,height);
+    // tex.filterMag(Texture::LINEAR);
 
-    int stride = tex.numComponents();
-    int Nx = tex.width();
-    int Ny = tex.height();
+    // int stride = tex.numComponents();
+    // int Nx = tex.width();
+    // int Ny = tex.height();
 
-    // Get a pointer to the (client-side) pixel buffer.
-    // When we make a read access to the pixels, they are flagged as dirty
-    // and get sent to the GPU the next time the texture is bound.
-    std::vector<unsigned char> pixels;
-    pixels.resize(stride * Nx * Ny);
+    // // Get a pointer to the (client-side) pixel buffer.
+    // // When we make a read access to the pixels, they are flagged as dirty
+    // // and get sent to the GPU the next time the texture is bound.
+    // std::vector<unsigned char> pixels;
+    // pixels.resize(stride * Nx * Ny);
 
     verts.reset();
     for (int i = 0; i < points.size(); i++)
@@ -106,7 +106,7 @@ void onAnimate(double dt) {
             // upload the point and texture coordinates only for points we have depth data for
             verts.vertex(vertices[i].x,vertices[i].y,vertices[i].z);
             // glTexCoord2fv(tex_coords[i]);
-            // verts.texCoord(tex_coords[i].u,tex_coords[i].v);
+            verts.texCoord(tex_coords[i].u,tex_coords[i].v);
             
         }
     }
