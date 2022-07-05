@@ -35,7 +35,7 @@ WallApp() {
 }
 
 void onCreate() {
-	window.makeCurrent();
+	// window.makeCurrent();
     
 
     nav().pullBack(16);
@@ -89,6 +89,7 @@ void onAnimate(double dt) {
 }
 
 void onDraw(Graphics &g) {
+    
     g.clear(0,0,0);
 
     
