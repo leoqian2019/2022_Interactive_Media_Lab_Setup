@@ -5,6 +5,7 @@
 #include <librealsense2/rs.hpp>
 // #include "example.hpp" 
 #include <iostream>
+#include "al/io/al_Window.hpp"
 
 using namespace al;
 // using namespace rs2;
@@ -14,6 +15,10 @@ public:
 
 // mesh to store the points we're rendering
 Mesh verts;
+
+Window window;
+
+al::Window::Dim dimension;
 
 // Declare pointcloud object, for calculating pointclouds and texture mappings
 rs2::pointcloud pc;
@@ -30,7 +35,7 @@ WallApp() {
 }
 
 void onCreate() {
-	
+	window.create();
     
 
     nav().pullBack(16);
@@ -41,7 +46,8 @@ void onCreate() {
 }
 
 void onAnimate(double dt) {
-    
+    dimension = window.dimensions();
+    printf(dimension.w + " " + dimension.h+"\n");
 
     auto frames = pipe.wait_for_frames();
 
