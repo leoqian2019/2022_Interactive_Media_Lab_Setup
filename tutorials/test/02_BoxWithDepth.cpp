@@ -35,8 +35,8 @@ rs2::pipeline pipe;
 Texture tex;
 
 WallApp() {
-    width = defaultWindow().width;
-    height = defaultWindow().height;
+    width = defaultWindow().width();
+    height = defaultWindow().height();
 }
 
 void onCreate() {
