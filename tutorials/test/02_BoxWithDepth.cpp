@@ -5,6 +5,7 @@
 #include <librealsense2/rs.hpp>
 // #include "example.hpp" 
 #include <iostream>
+#include <stdio.h>
 
 using namespace al;
 // using namespace rs2;
@@ -13,27 +14,29 @@ class WallApp : public App {
 public:
 
 // mesh to store the points we're rendering
-Mesh verts;
+    VAOMesh verts;
 
 // Declare pointcloud object, for calculating pointclouds and texture mappings
-rs2::pointcloud pc;
+    rs2::pointcloud pc;
 // We want the points object to be persistent so we can display the last cloud when a frame drops
-rs2::points points;
+    rs2::points points;
 
 // Create a Pipeline - this serves as a top-level API for streaming and processing frames
-rs2::pipeline pipe;
+    rs2::pipeline pipe;
 
-Texture tex;
+// std::vector to store the color of the vector field
+    std::vector<Color> field;
 
-WallApp() {
+// Texture to store the image
+    Texture tex;
 
-}
 
-void onCreate() {
-	
-    
+    WallApp() {
 
-    nav().pullBack(16);
+    }
+
+    void onCreate() {
+        nav().pullBack(16);
 
     
     // Configure and start the pipeline
@@ -41,7 +44,7 @@ void onCreate() {
 }
 
 void onAnimate(double dt) {
-    
+
 
     auto frames = pipe.wait_for_frames();
 
@@ -59,6 +62,7 @@ void onAnimate(double dt) {
     // Generate the pointcloud and texture mappings
     points = pc.calculate(depth);
 
+
     // std::cout << color.get_bytes_per_pixel() << std::endl;
     // tex.create2D(color.get_width(),color.get_height(),Texture::RGB8,Texture::RGB, Texture::UBYTE);
     // Upload the color frame to OpenGL
@@ -69,16 +73,47 @@ void onAnimate(double dt) {
     auto tex_coords = points.get_texture_coordinates(); // and texture coordinates
 
     verts.reset();
-    for (int i = 0; i < points.size(); i++)
-    {
-        if (vertices[i].z)
-        {
+    for (int i = 0; i < points.size(); i++) {
+        if (vertices[i].z) {
             // upload the point and texture coordinates only for points we have depth data for
-            verts.vertex(vertices[i].x,vertices[i].y,vertices[i].z);
-            // glTexCoord2fv(tex_coords[i]);
-            // verts.texCoord(tex_coords[i].u,tex_coords[i].v);
-            
+            verts.vertex(vertices[i].x, vertices[i].y, vertices[i].z);
+            verts.texCoord(tex_coords[i].u, tex_coords[i].v);
+
         }
+    }
+
+    int xRes = color.get_width();
+    int yRes = color.get_height();
+    field.resize(xRes * yRes);
+    // create a texture unit on the GPU
+    tex.create2D(xRes, yRes, Texture::RGBA32F, Texture::RGBA, Texture::FLOAT);
+
+//    for (int j = 0; j < yRes; ++j) {
+//        for (int i = 0; i < xRes; ++i) {
+//
+//
+//
+//            // store the color in the container
+//            field[xRes * j + i] = color;
+//        }
+//
+//    }
+    auto format = color.get_profile().format();
+    switch (format) {
+        case RS2_FORMAT_RGB8:
+            printf("1st \n");
+            break;
+        case RS2_FORMAT_RGBA8:
+            printf("2nd \n");
+            break;
+        case RS2_FORMAT_Y8:
+            printf("3rd \n");
+            break;
+        case RS2_FORMAT_Y10BPACK:
+            printf("4th \n");
+            break;
+        default:
+            throw std::runtime_error("The requested format is not supported by this demo!");
     }
 }
 
