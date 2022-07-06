@@ -132,7 +132,7 @@ void onDraw(Graphics &g) {
     g.draw(verts);
 //    tex.unbind();
     // g.color(0);
-//    g.polygonPoint();
+    g.polygonPoint();
     // g.draw(verts);
 
     g.popMatrix();
