@@ -127,12 +127,12 @@ void onDraw(Graphics &g) {
 
     // draw the pointcloud
     g.pushMatrix();
-    g.texture();
+//    g.texture();
 //    g.color(0.5, 0.5, 0.5);
-    tex.bind();
+//    tex.bind();
     g.scale(4);
     g.draw(verts);
-    tex.unbind();
+//    tex.unbind();
     // g.color(0);
     g.polygonPoint();
     // g.draw(verts);
