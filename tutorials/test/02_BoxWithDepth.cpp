@@ -98,41 +98,42 @@ void onAnimate(double dt) {
 //        }
 //
 //    }
-    auto format = color.get_profile().format();
-    switch (format) {
-        case RS2_FORMAT_RGB8:
-            printf("1st \n");
-            break;
-        case RS2_FORMAT_RGBA8:
-            printf("2nd \n");
-            break;
-        case RS2_FORMAT_Y8:
-            printf("3rd \n");
-            break;
-        case RS2_FORMAT_Y10BPACK:
-            printf("4th \n");
-            break;
-        default:
-            throw std::runtime_error("The requested format is not supported by this demo!");
-    }
+//    auto format = color.get_profile().format();
+//    switch (format) {
+//        case RS2_FORMAT_RGB8:
+//            printf("1st \n");
+//            break;
+//        case RS2_FORMAT_RGBA8:
+//            printf("2nd \n");
+//            break;
+//        case RS2_FORMAT_Y8:
+//            printf("3rd \n");
+//            break;
+//        case RS2_FORMAT_Y10BPACK:
+//            printf("4th \n");
+//            break;
+//        default:
+//            throw std::runtime_error("The requested format is not supported by this demo!");
+//    }
+    tex.submit(color.get_data());
 }
 
 void onDraw(Graphics &g) {
-    g.clear(0,0,0);
+    g.clear(0, 0, 0);
 
-    
+
     // draw the pointcloud
     g.pushMatrix();
-
-    g.color(0.5, 0.5, 0.5);
-    // tex.bind();
-    // g.texture();
+    g.texture();
+//    g.color(0.5, 0.5, 0.5);
+    tex.bind();
     g.scale(4);
     g.draw(verts);
-    // tex.unbind();
+    tex.unbind();
     // g.color(0);
-    g.polygonPoint();
+//    g.polygonPoint();
     // g.draw(verts);
+
     g.popMatrix();
 
 
