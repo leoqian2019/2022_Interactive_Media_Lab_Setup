@@ -14,7 +14,7 @@ class WallApp : public App {
 public:
 
 // mesh to store the points we're rendering
-    Mesh verts;
+    VAOMesh verts;
 
 // Declare pointcloud object, for calculating pointclouds and texture mappings
     rs2::pointcloud pc;
