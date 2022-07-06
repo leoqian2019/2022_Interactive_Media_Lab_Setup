@@ -118,7 +118,7 @@ void onAnimate(double dt) {
 //            throw std::runtime_error("The requested format is not supported by this demo!");
 //    }
 //    tex.submit(color.get_data());
-    tex.submit(field.data());
+    tex.submit((uint8_t *) field.data());
 }
 
 void onDraw(Graphics &g) {
@@ -127,14 +127,15 @@ void onDraw(Graphics &g) {
 
     // draw the pointcloud
     g.pushMatrix();
-//    g.texture();
+    g.texture();
 //    g.color(0.5, 0.5, 0.5);
-//    tex.bind();
+    tex.bind();
     g.scale(4);
     g.draw(verts);
-//    tex.unbind();
+
     // g.color(0);
     g.polygonPoint();
+    tex.unbind();
     // g.draw(verts);
 
     g.popMatrix();
