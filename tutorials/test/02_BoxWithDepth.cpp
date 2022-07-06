@@ -87,7 +87,7 @@ void onAnimate(double dt) {
     std::cout << xRes << "," << yRes << std::endl;
     field.resize(xRes * yRes);
     // create a texture unit on the GPU
-    tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB8, Texture::UBYTE);
+    tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB, Texture::UBYTE);
 
     for (int j = 0; j < yRes; ++j) {
         for (int i = 0; i < xRes; ++i) {
@@ -128,19 +128,19 @@ void onDraw(Graphics &g) {
 
     // draw the pointcloud
     g.pushMatrix();
-    g.texture();
+//    g.texture();
 //    g.color(0.5, 0.5, 0.5);
-    tex.bind();
+//    tex.bind();
     g.scale(4);
+    g.polygonPoint();
     g.draw(verts);
 
     // g.color(0);
-    g.polygonPoint();
-    tex.unbind();
+
+//    tex.unbind();
     // g.draw(verts);
 
     g.popMatrix();
-
 
 
 }
