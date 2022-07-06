@@ -86,7 +86,7 @@ void onAnimate(double dt) {
     int yRes = color.get_height();
     field.resize(xRes * yRes);
     // create a texture unit on the GPU
-    tex.create2D(xRes, yRes, Texture::RGBA32F, Texture::RGB8, Texture::FLOAT);
+    tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB8, Texture::UBYTE);
 
 //    for (int j = 0; j < yRes; ++j) {
 //        for (int i = 0; i < xRes; ++i) {
