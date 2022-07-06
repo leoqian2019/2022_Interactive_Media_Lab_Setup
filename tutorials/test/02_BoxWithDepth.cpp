@@ -14,7 +14,7 @@ class WallApp : public App {
 public:
 
 // mesh to store the points we're rendering
-    VAOMesh verts;
+    Mesh verts;
 
 // Declare pointcloud object, for calculating pointclouds and texture mappings
     rs2::pointcloud pc;
@@ -82,11 +82,11 @@ void onAnimate(double dt) {
         }
     }
 
-    int xRes = color.get_width();
-    int yRes = color.get_height();
-    field.resize(xRes * yRes);
-    // create a texture unit on the GPU
-    tex.create2D(xRes, yRes, Texture::RGBA32F, Texture::RGBA, Texture::FLOAT);
+//    int xRes = color.get_width();
+//    int yRes = color.get_height();
+//    field.resize(xRes * yRes);
+//    // create a texture unit on the GPU
+//    tex.create2D(xRes, yRes, Texture::RGBA32F, Texture::RGB8, Texture::FLOAT);
 
 //    for (int j = 0; j < yRes; ++j) {
 //        for (int i = 0; i < xRes; ++i) {
@@ -98,23 +98,23 @@ void onAnimate(double dt) {
 //        }
 //
 //    }
-    auto format = color.get_profile().format();
-    switch (format) {
-        case RS2_FORMAT_RGB8:
-            printf("1st \n");
-            break;
-        case RS2_FORMAT_RGBA8:
-            printf("2nd \n");
-            break;
-        case RS2_FORMAT_Y8:
-            printf("3rd \n");
-            break;
-        case RS2_FORMAT_Y10BPACK:
-            printf("4th \n");
-            break;
-        default:
-            throw std::runtime_error("The requested format is not supported by this demo!");
-    }
+//    auto format = color.get_profile().format();
+//    switch (format) {
+//        case RS2_FORMAT_RGB8:
+//            printf("1st \n");
+//            break;
+//        case RS2_FORMAT_RGBA8:
+//            printf("2nd \n");
+//            break;
+//        case RS2_FORMAT_Y8:
+//            printf("3rd \n");
+//            break;
+//        case RS2_FORMAT_Y10BPACK:
+//            printf("4th \n");
+//            break;
+//        default:
+//            throw std::runtime_error("The requested format is not supported by this demo!");
+//    }
 }
 
 void onDraw(Graphics &g) {
