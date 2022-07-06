@@ -92,7 +92,7 @@ void onAnimate(double dt) {
     for (int j = 0; j < yRes; ++j) {
         for (int i = 0; i < xRes; ++i) {
 
-            Color color = Color(0.1, 0.2, 0.3);
+            Color color = Color(0.5, 0.5, 0.5);
 
             // store the color in the container
             field[xRes * j + i] = color;
@@ -118,24 +118,25 @@ void onAnimate(double dt) {
 //            throw std::runtime_error("The requested format is not supported by this demo!");
 //    }
 //    tex.submit(color.get_data());
-    tex.submit((uint8_t *) field.data());
+    tex.submit(field.data());
 }
 
 void onDraw(Graphics &g) {
-    g.clear(0, 0, 0);
+//    g.clear(0, 0, 0);
 
+    g.clear();
 
     // draw the pointcloud
     g.pushMatrix();
-    g.texture();
+//    g.texture();
 //    g.color(0.5, 0.5, 0.5);
-    tex.bind();
+//    tex.bind();
     g.scale(4);
     g.draw(verts);
 
     // g.color(0);
     g.polygonPoint();
-    tex.unbind();
+//    tex.unbind();
     // g.draw(verts);
 
     g.popMatrix();
