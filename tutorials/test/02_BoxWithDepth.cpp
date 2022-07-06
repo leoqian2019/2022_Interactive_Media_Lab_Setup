@@ -84,6 +84,7 @@ void onAnimate(double dt) {
 
     int xRes = color.get_width();
     int yRes = color.get_height();
+    std::cout << xRes << "," << yRes << std::endl;
     field.resize(xRes * yRes);
     // create a texture unit on the GPU
     tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB8, Texture::UBYTE);
@@ -115,7 +116,7 @@ void onAnimate(double dt) {
 //        default:
 //            throw std::runtime_error("The requested format is not supported by this demo!");
 //    }
-    tex.submit(color.get_data());
+//    tex.submit(color.get_data());
 }
 
 void onDraw(Graphics &g) {
