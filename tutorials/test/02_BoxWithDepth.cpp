@@ -89,16 +89,17 @@ void onAnimate(double dt) {
     // create a texture unit on the GPU
     tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB8, Texture::UBYTE);
 
-//    for (int j = 0; j < yRes; ++j) {
-//        for (int i = 0; i < xRes; ++i) {
-//
-//
-//
-//            // store the color in the container
-//            field[xRes * j + i] = color;
-//        }
-//
-//    }
+    for (int j = 0; j < yRes; ++j) {
+        for (int i = 0; i < xRes; ++i) {
+
+            Color color = Color(0.1, 0.2, 0.3);
+
+            // store the color in the container
+            field[xRes * j + i] = color;
+
+        }
+
+    }
 //    auto format = color.get_profile().format();
 //    switch (format) {
 //        case RS2_FORMAT_RGB8:
@@ -116,7 +117,8 @@ void onAnimate(double dt) {
 //        default:
 //            throw std::runtime_error("The requested format is not supported by this demo!");
 //    }
-    tex.submit(color.get_data());
+//    tex.submit(color.get_data());
+    tex.submit(field.data());
 }
 
 void onDraw(Graphics &g) {
