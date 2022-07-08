@@ -88,7 +88,8 @@ void onAnimate(double dt) {
     // RESET XRES AND YRES
 //    xRes = defaultWindow().width();
 //    yRes = defaultWindow().height();
-    verts.scale(defaultWindow().width() / 640);
+    double scale = defaultWindow().width() / 640;
+    verts.scale(scale, scale, scale);
 
 //    std::cout << xRes << "," << yRes << std::endl;
     // field.resize(xRes * yRes);
