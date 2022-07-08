@@ -88,6 +88,10 @@ void onAnimate(double dt) {
     int yRes = color.get_height();
     std::cout << xRes << "," << yRes << std::endl;
     // field.resize(xRes * yRes);
+
+    // set the filters for the texture. Default: NEAREST
+    tex.filterMag(Texture::LINEAR);
+    tex.filterMin(Texture::LINEAR);
     // create a texture unit on the GPU
     tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB, Texture::UBYTE);
 
