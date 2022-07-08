@@ -86,6 +86,11 @@ void onAnimate(double dt) {
 
     int xRes = color.get_width();
     int yRes = color.get_height();
+
+    // RESET XRES AND YRES
+    xRes = defaultWindow().width();
+    yRes = defaultWindow().height();
+
     std::cout << xRes << "," << yRes << std::endl;
     // field.resize(xRes * yRes);
 
