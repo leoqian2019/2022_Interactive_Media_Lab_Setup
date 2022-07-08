@@ -123,7 +123,7 @@ void onAnimate(double dt) {
 //        default:
 //            throw std::runtime_error("The requested format is not supported by this demo!");
 //    }
-    tex.submit(color.get_data();
+    tex.submit(color.get_data());
 //    tex.submit(field.data());
 }
 
