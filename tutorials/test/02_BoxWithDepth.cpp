@@ -41,6 +41,7 @@ public:
 //        nav().pullBack(16);
 
 
+
         // Configure and start the pipeline
         pipe.start();
     }
@@ -71,6 +72,7 @@ void onAnimate(double dt) {
 
     verts.reset();
 
+
     for (int i = 0; i < points.size(); i++) {
         if (vertices[i].z) {
             // upload the point and texture coordinates only for points we have depth data for
@@ -97,6 +99,9 @@ void onAnimate(double dt) {
     // set the filters for the texture. Default: NEAREST
     tex.filterMag(Texture::LINEAR);
     tex.filterMin(Texture::LINEAR);
+
+    tex.wrapS(Texture::CLAMP_TO_EDGE);
+    tex.wrapT(Texture::CLAMP_TO_EDGE);
     // create a texture unit on the GPU
     tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB, Texture::UBYTE);
 
