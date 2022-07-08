@@ -135,7 +135,7 @@ void onDraw(Graphics &g) {
     tex.bind();
     g.scale(4);
 //    g.polygonPoint();
-//    g.polygonLine()
+    g.polygonLine();
     g.draw(verts);
 
     // g.color(0);
