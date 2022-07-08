@@ -70,6 +70,7 @@ void onAnimate(double dt) {
     auto tex_coords = points.get_texture_coordinates(); // and texture coordinates
 
     verts.reset();
+
     for (int i = 0; i < points.size(); i++) {
         if (vertices[i].z) {
             // upload the point and texture coordinates only for points we have depth data for
@@ -79,12 +80,15 @@ void onAnimate(double dt) {
         }
     }
 
+
     int xRes = color.get_width();
     int yRes = color.get_height();
+
 
     // RESET XRES AND YRES
 //    xRes = defaultWindow().width();
 //    yRes = defaultWindow().height();
+    verts.scale(defaultWindow().width() / 640);
 
 //    std::cout << xRes << "," << yRes << std::endl;
     // field.resize(xRes * yRes);
