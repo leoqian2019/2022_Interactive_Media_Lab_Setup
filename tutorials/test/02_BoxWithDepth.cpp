@@ -38,7 +38,7 @@ public:
     void onCreate() {
         nav().pos(0, 0, 0);
         nav().faceToward(Vec3d(0, 0, 1), Vec3d(0, -1, 0));
-        nav().pullBack(16);
+//        nav().pullBack(16);
 
 
         // Configure and start the pipeline
@@ -65,11 +65,6 @@ void onAnimate(double dt) {
     points = pc.calculate(depth);
 
 
-    // std::cout << color.get_bytes_per_pixel() << std::endl;
-    // tex.create2D(color.get_width(),color.get_height(),Texture::RGB8,Texture::RGB, Texture::UBYTE);
-    // Upload the color frame to OpenGL
-    // tex.submit(color.get_data());
-
     /* this segment actually prints the pointcloud */
     auto vertices = points.get_vertices();              // get vertices
     auto tex_coords = points.get_texture_coordinates(); // and texture coordinates
@@ -91,7 +86,7 @@ void onAnimate(double dt) {
 //    xRes = defaultWindow().width();
 //    yRes = defaultWindow().height();
 
-    std::cout << xRes << "," << yRes << std::endl;
+//    std::cout << xRes << "," << yRes << std::endl;
     // field.resize(xRes * yRes);
 
     // set the filters for the texture. Default: NEAREST
@@ -128,7 +123,7 @@ void onAnimate(double dt) {
 //        default:
 //            throw std::runtime_error("The requested format is not supported by this demo!");
 //    }
-    tex.submit(color.get_data(), Texture::RGB, Texture::UBYTE);
+    tex.submit(color.get_data();
 //    tex.submit(field.data());
 }
 
