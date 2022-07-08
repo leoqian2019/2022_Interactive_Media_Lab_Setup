@@ -88,8 +88,8 @@ void onAnimate(double dt) {
     int yRes = color.get_height();
 
     // RESET XRES AND YRES
-    xRes = defaultWindow().width();
-    yRes = defaultWindow().height();
+//    xRes = defaultWindow().width();
+//    yRes = defaultWindow().height();
 
     std::cout << xRes << "," << yRes << std::endl;
     // field.resize(xRes * yRes);
@@ -128,7 +128,7 @@ void onAnimate(double dt) {
 //        default:
 //            throw std::runtime_error("The requested format is not supported by this demo!");
 //    }
-    tex.submit(color.get_data());
+    tex.submit(color.get_data(), Texture::RGB, Texture::UBYTE);
 //    tex.submit(field.data());
 }
 
