@@ -36,12 +36,14 @@ public:
     }
 
     void onCreate() {
+        nav().pos(0, 0, 0);
+        nav().faceToward(Vec3d(0, 0, 1), Vec3d(0, -1, 0));
         nav().pullBack(16);
 
-    
-    // Configure and start the pipeline
-    pipe.start();
-}
+
+        // Configure and start the pipeline
+        pipe.start();
+    }
 
 void onAnimate(double dt) {
 
@@ -85,7 +87,7 @@ void onAnimate(double dt) {
     int xRes = color.get_width();
     int yRes = color.get_height();
     std::cout << xRes << "," << yRes << std::endl;
-    field.resize(xRes * yRes);
+    // field.resize(xRes * yRes);
     // create a texture unit on the GPU
     tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB, Texture::UBYTE);
 
