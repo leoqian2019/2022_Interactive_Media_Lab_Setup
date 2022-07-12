@@ -38,6 +38,7 @@ public:
     void onCreate() {
         nav().pos(0, 0, 0);
         nav().faceToward(Vec3d(0, 0, 1), Vec3d(0, -1, 0));
+
 //        nav().pullBack(1);
 
 
@@ -135,6 +136,7 @@ void onAnimate(double dt) {
 //    }
     tex.submit(color.get_data());
 //    tex.submit(field.data());
+
 }
 
 void onDraw(Graphics &g) {
@@ -143,13 +145,16 @@ void onDraw(Graphics &g) {
     g.clear();
     g.depthTesting(true);
     // draw the pointcloud
-    g.pushMatrix();
+    Matrix4<float> matrix4;
+    matrix4.perspective(60, defaultWindow().width() / defaultWindow().height(), 0.01f, 10.0f);
+    g.pushMatrix(matrix4);
     g.texture();
 //    g.color(0.5, 0.5, 0.5);
     tex.bind();
     g.scale(4);
     g.polygonPoint();
     g.pointSize(defaultWindow().width() / 640);
+
 
 //    g.polygonLine();
     g.draw(verts);
