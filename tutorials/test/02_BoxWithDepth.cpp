@@ -141,7 +141,7 @@ void onDraw(Graphics &g) {
 //    g.clear(0, 0, 0);
 
     g.clear();
-
+    g.depthTesting(true);
     // draw the pointcloud
     g.pushMatrix();
     g.texture();
