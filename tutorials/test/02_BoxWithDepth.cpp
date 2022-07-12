@@ -149,6 +149,7 @@ void onDraw(Graphics &g) {
     tex.bind();
     g.scale(4);
     g.polygonPoint();
+    g.pointSize(defaultWindow().width() / 640);
 //    g.polygonLine();
     g.draw(verts);
 
