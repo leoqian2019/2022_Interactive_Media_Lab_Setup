@@ -38,7 +38,7 @@ public:
     void onCreate() {
         nav().pos(0, 0, 0);
         nav().faceToward(Vec3d(0, 0, 1), Vec3d(0, -1, 0));
-//        nav().pullBack(16);
+        nav().pullBack(4);
 
 
 
@@ -150,6 +150,7 @@ void onDraw(Graphics &g) {
     g.scale(4);
     g.polygonPoint();
     g.pointSize(defaultWindow().width() / 640);
+
 //    g.polygonLine();
     g.draw(verts);
 
