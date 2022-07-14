@@ -152,7 +152,8 @@ void onDraw(Graphics &g) {
 //    g.color(0.5, 0.5, 0.5);
     tex.bind();
     g.scale(4);
-    g.polygonPoint();
+//    g.polygonPoint();
+    g.polygonFill();
     g.pointSize(defaultWindow().width() / 640);
 
 
