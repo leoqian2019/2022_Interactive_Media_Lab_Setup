@@ -1,0 +1,1 @@
+target_link_directories(realsense2 ${OpenCV_LIBS})
