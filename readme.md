@@ -33,6 +33,9 @@ At the same time, you have to install dependencies:
 librealsense2: https://github.com/IntelRealSense/librealsense (allows you to use the depth camera)
 opencv: (use brew to install)
 
+At the same time, make sure you put the folder "librealsense2" and its content from
+https://github.com/IntelRealSense/librealsense/tree/master/include into the "include" folder of this repo as well
+
 ## Modify the CMakeList.txt
 
 Since we use run.sh to build this complex application, we need to modify allolib/CMakeList.txt in order for allolib to
