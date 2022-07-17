@@ -344,9 +344,9 @@ target_include_directories(al PUBLIC
 )
 
 target_link_libraries(al PUBLIC
-  ${OPENGL_gl_LIBRARY}
-  Gamma glfw glad rtmidi cpptoml dr_libs
-  nlohmann_json::nlohmann_json imgui oscpack stb serial realsense2)
+        ${OPENGL_gl_LIBRARY}
+        Gamma glfw glad rtmidi cpptoml dr_libs
+        nlohmann_json::nlohmann_json imgui oscpack stb serial realsense2 opencv)
 
 macro(Copy_dlls dest_path target DLLS_TO_COPY)
   if (DLLS_TO_COPY)
