@@ -50,3 +50,4 @@ cmake-build-debug/*
 .DS_Store
 librealsense/*
 allolib/include/librealsense2/*
+build
