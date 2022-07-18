@@ -71,8 +71,8 @@ void onAnimate(double dt) {
     auto vertices = points.get_vertices();              // get vertices
     auto tex_coords = points.get_texture_coordinates(); // and texture coordinates
 
-    verts.reset();
 
+    verts.reset();
 
     for (int i = 0; i < points.size(); i++) {
         if (vertices[i].z) {
@@ -87,16 +87,6 @@ void onAnimate(double dt) {
     int xRes = color.get_width();
     int yRes = color.get_height();
 
-
-    // RESET XRES AND YRES
-//    xRes = defaultWindow().width();
-//    yRes = defaultWindow().height();
-//    double scale = defaultWindow().width() / 640;
-//    verts.scale(scale, scale, scale);
-
-//    std::cout << xRes << "," << yRes << std::endl;
-    // field.resize(xRes * yRes);
-
     // set the filters for the texture. Default: NEAREST
     tex.filterMag(Texture::LINEAR);
     tex.filterMin(Texture::LINEAR);
@@ -106,48 +96,17 @@ void onAnimate(double dt) {
     // create a texture unit on the GPU
     tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB, Texture::UBYTE);
 
-//    for (int j = 0; j < yRes; ++j) {
-//        for (int i = 0; i < xRes; ++i) {
-//
-//            Color color = Color(0.5, 0.5, 0.5);
-//
-//            // store the color in the container
-//            field[xRes * j + i] = color;
-//
-//        }
-//
-//    }
-//    auto format = color.get_profile().format();
-//    switch (format) {
-//        case RS2_FORMAT_RGB8:
-//            printf("1st \n");
-//            break;
-//        case RS2_FORMAT_RGBA8:
-//            printf("2nd \n");
-//            break;
-//        case RS2_FORMAT_Y8:
-//            printf("3rd \n");
-//            break;
-//        case RS2_FORMAT_Y10BPACK:
-//            printf("4th \n");
-//            break;
-//        default:
-//            throw std::runtime_error("The requested format is not supported by this demo!");
-//    }
     tex.submit(color.get_data());
-//    tex.submit(field.data());
 
 }
 
 void onDraw(Graphics &g) {
-//    g.clear(0, 0, 0);
 
     g.clear();
     g.depthTesting(true);
     // draw the pointcloud
     Matrix4<float> matrix4;
-    matrix4.perspective(60, defaultWindow().width() / defaultWindow().height(), 0.01f, 10.0f);
-    g.pushMatrix(matrix4);
+    g.pushMatrix();
     g.texture();
 //    g.color(0.5, 0.5, 0.5);
     tex.bind();
