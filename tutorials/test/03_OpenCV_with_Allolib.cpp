@@ -15,7 +15,7 @@
 #include "al/ui/al_Parameter.hpp"
 #include "al/math/al_Mat.hpp"
 #include <librealsense2/rs.hpp>
-#include "librealsense/wrappers/opencv/cv-helpers.hpp"
+#include "librealsense2/cv-helpers.hpp"
 
 using namespace al;
 
