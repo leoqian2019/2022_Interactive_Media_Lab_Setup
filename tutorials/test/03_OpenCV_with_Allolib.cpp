@@ -26,8 +26,7 @@ public:
 // Create a Pipeline - this serves as a top-level API for streaming and processing frames
     rs2::pipeline pipe;
 
-    cv::Mat color_mat;
-
+    cv::Mat image;
 
     WallApp() {
 
@@ -51,14 +50,23 @@ public:
             color = frames.get_infrared_frame();
 
         // Convert RealSense frame to OpenCV matrix:
-        color_mat = frame_to_mat(color);
+//        color_mat = frame_to_mat(color);
 
+        // Query frame size (width and height)
+        const int w = color.as<rs2::video_frame>().get_width();
+        const int h = color.as<rs2::video_frame>().get_height();
+
+        // Create OpenCV matrix of size (w,h) from the colorized depth data
+        cv::Mat image(cv::Size(w, h), CV_8UC3, (void *) color.get_data(), cv::Mat::AUTO_STEP);
+
+        // Update the window with new data
+        imshow("window_name", image);
 
     }
 
     void onDraw(Graphics &g) {
         // Update the window with new data
-        imshow("display image", color_mat);
+//        imshow("display image", color_mat);
 
     }
 };
