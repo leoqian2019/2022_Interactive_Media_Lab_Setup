@@ -17,7 +17,7 @@ using namespace std;
 
 const char *params
         = "{ help h         |           | Print usage }"
-          "{ input          | test.avi | Path to a video or a sequence of image }"
+          "{ input          | google.jpeg | Path to a video or a sequence of image }"
           "{ algo           | MOG2      | Background subtraction method (KNN, MOG2) }";
 
 int main(int argc, char *argv[]) {
