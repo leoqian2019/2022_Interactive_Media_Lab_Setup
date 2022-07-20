@@ -4,7 +4,7 @@
 
 #include <opencv2/dnn.hpp>
 #include <librealsense2/rs.hpp>
-#include "../cv-helpers.hpp"
+#include "include/cv-helpers.hpp"
 
 const size_t inWidth = 300;
 const size_t inHeight = 300;
