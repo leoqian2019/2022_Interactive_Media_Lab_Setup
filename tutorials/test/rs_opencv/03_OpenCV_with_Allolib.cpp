@@ -41,7 +41,7 @@ public:
 //        nav().pos(0, 0, 0);
 //        nav().faceToward(Vec3d(0, 0, 1), Vec3d(0, -1, 0));
 
-        namedWindow("rs_opencv", WINDOW_AUTOSIZE);
+
         // Configure and start the pipeline
         cfg.enable_stream(RS2_STREAM_COLOR);
 
@@ -49,6 +49,8 @@ public:
     }
 
     void onAnimate(double dt) {
+        namedWindow("rs_opencv", WINDOW_AUTOSIZE);
+
         auto frames = pipe.wait_for_frames();
         rs2::align align_to(RS2_STREAM_COLOR);
         // align the frames
@@ -74,14 +76,14 @@ public:
         colorMat = frame_to_mat(color);
 
         // Update the window with new data
-
+        imshow("rs_opencv", colorMat);
 
     }
 
     void onDraw(Graphics &g) {
         // Update the window with new data
 //        imshow("display image", color_mat);
-        imshow("rs_opencv", colorMat);
+
 
     }
 };
