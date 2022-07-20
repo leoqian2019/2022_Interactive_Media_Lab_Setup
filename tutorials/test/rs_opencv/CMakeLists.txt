@@ -8,8 +8,8 @@ set(DEPENDENCIES realsense2 $(OpenCV_LIBS))
 
 message(STATUS "OPENCV VERSION $(OpenCV_VERSION)")
 
-add_executable(rs_dnn rs_dnn.cpp include/cv-helpers.hpp)
+add_executable(rs_dnn rs_dnn.cpp cv-helpers.hpp)
 
-set_property(TARGET rs_opencv PROPERTY CXX_STANDARD 11)
+set_property(TARGET rs-dnn PROPERTY CXX_STANDARD 11)
 
-target_link_libraries(rs_opencv $(DEPENDENCIES))
+target_link_libraries(rs-dnn $(DEPENDENCIES))

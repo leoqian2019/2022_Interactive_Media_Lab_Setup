@@ -31,19 +31,7 @@
 *.out
 *.app
 
-build/cmake_install.cmake
-build/CMakeCache.txt
-build/CMakeDoxyfile.in
-build/CMakeDoxygenDefaults.cmake
-build/compile_commands.json
-build/Makefile
-build/RtMidiConfigUninstall.cmake
-build/CMakeFiles/*
-build/.cmake/api/*
 
-build/.cmake/api/v1/query/client-vscode/query.json
-tutorials/vectorField/bin/*
-tutorials/vectorField/build/*
 .idea/*
 .vscode/*
 cmake-build-debug/*
@@ -51,3 +39,4 @@ cmake-build-debug/*
 librealsense/*
 allolib/include/librealsense2/*
 build
+bin
