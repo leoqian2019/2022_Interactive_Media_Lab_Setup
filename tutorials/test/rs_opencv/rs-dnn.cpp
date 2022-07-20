@@ -3,8 +3,8 @@
 // Please see https://github.com/opencv/opencv/blob/master/LICENSE
 
 #include <opencv2/dnn.hpp>
-#include <librealsense2/rs.hpp>
-#include "include/cv-helpers.hpp"
+#include "librealsense2/rs.hpp"
+#include "tutorials/test/include/cv-helpers.hpp"
 
 const size_t inWidth = 300;
 const size_t inHeight = 300;
