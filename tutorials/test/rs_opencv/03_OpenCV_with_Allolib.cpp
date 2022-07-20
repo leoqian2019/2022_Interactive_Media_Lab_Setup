@@ -43,7 +43,7 @@ public:
 
         namedWindow("rs_opencv", WINDOW_AUTOSIZE);
         // Configure and start the pipeline
-        cfg.enable_stream(RS2_STREAM_COLOR, windowWidth, windowHeight, RS2_FORMAT_RGB8, 6);
+        cfg.enable_stream(RS2_STREAM_COLOR);
 
         pipe.start(cfg);
     }
