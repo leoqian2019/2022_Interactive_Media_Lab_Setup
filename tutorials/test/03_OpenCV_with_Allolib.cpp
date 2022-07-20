@@ -45,8 +45,6 @@ public:
 
         auto color = frames.get_color_frame();
 
-
-
         // For cameras that don't have RGB sensor, we'll map the pointcloud to infrared instead of color
         if (!color)
             color = frames.get_infrared_frame();
@@ -62,7 +60,7 @@ public:
         cv::Mat image(cv::Size(w, h), CV_8UC3, (void *) color.get_data(), cv::Mat::AUTO_STEP);
 
         // Update the window with new data
-        imshow("window_name", frame_to_mat(color));
+        imshow("window_name", image);
 
     }
 
