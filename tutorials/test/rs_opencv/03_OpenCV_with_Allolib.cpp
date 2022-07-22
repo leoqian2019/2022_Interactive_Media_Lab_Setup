@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) try {
 
     using namespace cv;
     const auto window_name = "Display Image";
-    namedWindow(window_name, WINDOW_AUTOSIZE);
+    namedWindow(window_name);
 
     while (waitKey(1) < 0 && getWindowProperty(window_name, WND_PROP_AUTOSIZE) >= 0) {
         rs2::frameset data = pipe.wait_for_frames(); // Wait for next set of frames from the camera
