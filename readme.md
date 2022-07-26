@@ -49,3 +49,21 @@ and OpenCV installed
 The files created by myself are all stored in tutorials/test. You guys can feel free to add more files and use run.sh to
 build and test them
 
+## Fix for m1 user
+
+We found a solution so that Allolib would run on your macs. This meant making modifications to the conditionals in the
+following files in allolib/external/oscpack/osc folder
+
+oscType.h line 64
+
+oscReceiveElements.h line 103
+
+oscOutBoundPacketStream.h line 108
+
+oscType.h line 64
+
+switch[#if defined(x86_64) || defined(_M_X64)] to [#if (defined(x86_64) || defined(_M_X64) || true)]
+
+and on oscReceiveElements.h line 103 and oscOutBoundPacketStream.h line 108
+
+switch [#if !(defined(x86_64) || defined(_M_X64) )] to [#if !(defined(x86_64) || defined(_M_X64) || true)]
