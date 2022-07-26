@@ -2,8 +2,6 @@
 #include "al/graphics/al_Shapes.hpp"
 #include "al/ui/al_Parameter.hpp"
 #include "al/math/al_Random.hpp"
-#include <librealsense2/rs.hpp>
-#include <iostream>  
 
 using namespace al;
 // using namespace rs2;
@@ -19,14 +17,10 @@ Mesh wall[2];
 
 double angle1, angle2;
 
-// Create a Pipeline - this serves as a top-level API for streaming and processing frames
-rs2::pipeline p;
-float dist_to_center;
-
 SphereApp() {
     zpos = 10.0;
-    dist_to_center = 0.0;
-    
+
+
 }
 
 void onCreate() {
@@ -62,9 +56,6 @@ void onCreate() {
     nav().pullBack(16);
 
     
-    // Configure and start the pipeline
-    p.start();
-    
     
 }
 
@@ -72,20 +63,6 @@ void onAnimate(double dt) {
     angle1 += 1. / 3;
     angle2 += M_PI / 3;
 
-    // Blo// ck program until frames arrive
-    rs2::frameset frames = p.wait_for_frames();
-// 
-//     // Try to get a frame of a depth image
-    rs2::depth_frame depth = frames.get_depth_frame();
-// 
-//     // Get the depth frame's dimensions
-    auto width = depth.get_width();
-    auto height = depth.get_height();
-// 
-//     // Query the distance from the camera to the object in the center of the image
-    dist_to_center = depth.get_distance(width / 2, height / 2);
-//     
-    std::cout << "The camera is facing an object " << dist_to_center << " meters away \r";
 }
 
 void onDraw(Graphics &g) {
