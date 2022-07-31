@@ -14,7 +14,8 @@ public:
 // mesh to store the points we're rendering
     Mesh verts;
 
-// Declare pointcloud object, for calculating pointclouds and texture mappings
+
+    // Declare pointcloud object, for calculating pointclouds and texture mappings
     rs2::pointcloud pc;
 // We want the points object to be persistent so we can display the last cloud when a frame drops
     rs2::points points;
