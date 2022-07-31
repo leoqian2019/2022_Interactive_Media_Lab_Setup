@@ -26,15 +26,9 @@ SphereApp() {
 void onCreate() {
     angle1 = angle2 = 0;
     int Nv;
-    // Set the camera to view the scene
-    // nav().pos(0,0,zpos);
     // Prepare mesh to draw a cube
     Nv = addSphere(sphere,2,36);
-    // mesh.primitive(Mesh::LINE_STRIP);
-    // for(int i = 0; i < Nv; ++i){
-    //     float f = float(i) /Nv;
-    //     sphere.color(HSV(f*0.1+0.2,1,1));
-    // }
+
     float f = 1.0;
     sphere.color(HSV(f*0.1+0.2,1,1));
 
@@ -42,7 +36,6 @@ void onCreate() {
     sphere.generateNormals();
 
     // add two rectangles
-
     Nv = addRect(wall[0],0,0,6,4);
     wall[0].color(HSV(f*0.1+0.2,1,1));
     wall[0].decompress();
@@ -55,8 +48,6 @@ void onCreate() {
 
     nav().pullBack(16);
 
-    
-    
 }
 
 void onAnimate(double dt) {
@@ -76,7 +67,6 @@ void onDraw(Graphics &g) {
 
     // draw the sphere
     g.pushMatrix();
-    // g.translate(R * cos(1 * angPos), R * sin(1 * angPos), 0);
     g.rotate(angle1, 0, 1, 0);
     g.rotate(angle2, 1, 0, 0);
     g.color(0.5, 0.5, 0.5);
@@ -92,7 +82,6 @@ void onDraw(Graphics &g) {
     // draw the wall[0]
     g.pushMatrix();
     g.translate(3,-2,-1);
-    // g.rotate(90,0,0,1);
     g.rotate(90,0,1,0);
     g.color(0.5, 0.5, 0.5);
     g.polygonFill();
@@ -106,7 +95,6 @@ void onDraw(Graphics &g) {
     // draw the wall[1]
     g.pushMatrix();
     g.translate(-3,-2,-1);
-    // g.rotate(90,0,0,1);
     g.rotate(90,0,1,0);
     g.color(0.5, 0.5, 0.5);
     g.polygonFill();

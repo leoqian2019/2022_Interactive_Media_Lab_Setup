@@ -3,7 +3,7 @@
 #include "al/ui/al_Parameter.hpp"
 #include "al/math/al_Random.hpp"
 #include <librealsense2/rs.hpp>
-// #include "example.hpp" 
+// #include "example.hpp"
 #include <iostream>
 #include <stdio.h>
 
@@ -32,16 +32,11 @@ public:
 
 
     WallApp() {
-
     }
 
     void onCreate() {
         nav().pos(0, 0, 0);
         nav().faceToward(Vec3d(0, 0, 1), Vec3d(0, -1, 0));
-
-//        nav().pullBack(1);
-
-
 
         // Configure and start the pipeline
         pipe.start();
@@ -104,29 +99,17 @@ void onDraw(Graphics &g) {
 
     g.clear();
     g.depthTesting(true);
-    // draw the pointcloud
+    // Draws the pointcloud
     Matrix4<float> matrix4;
     g.pushMatrix();
     g.texture();
-//    g.color(0.5, 0.5, 0.5);
     tex.bind();
     g.scale(4);
     g.polygonPoint();
-//    g.polygonFill();
     g.pointSize(defaultWindow().width() / 640);
-
-
-//    g.polygonLine();
     g.draw(verts);
-
-    // g.color(0);
-
     tex.unbind();
-//     g.draw(verts);
-
     g.popMatrix();
-
-
 }
 };
 

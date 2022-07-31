@@ -8,7 +8,7 @@ using namespace al;
 class SphereApp : public App {
 public:
 
-// mesh to store the points we're rendering
+    // mesh to store the points we're rendering
     Mesh sphere;
 
     double angle1, angle2;
