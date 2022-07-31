@@ -4,41 +4,46 @@
 #include "al/math/al_Random.hpp"
 #include <librealsense2/rs.hpp>
 #include <iostream>
-#include <stdio.h>
+#include "al/io/al_Window.hpp"
 
 using namespace al;
 
 class WallApp : public App {
 public:
 
+
 // mesh to store the points we're rendering
-    Mesh verts;
+VAOMesh verts;
+std::vector<Color> field;
+
+// store width and height of the window
+int width;
+int height;
+
 
 // Declare pointcloud object, for calculating pointclouds and texture mappings
-    rs2::pointcloud pc;
+rs2::pointcloud pc;
 // We want the points object to be persistent so we can display the last cloud when a frame drops
-    rs2::points points;
+rs2::points points;
 
 // Create a Pipeline - this serves as a top-level API for streaming and processing frames
-    rs2::pipeline pipe;
+rs2::pipeline pipe;
 
-// std::vector to store the color of the vector field
-    std::vector<Color> field;
+Texture tex;
 
-// Texture to store the image
-    Texture tex;
+WallApp() {
+}
 
-    WallApp() {
-    }
+void onCreate() {
+    // Pulls the camera back
+    nav().pullBack(16);
 
-    void onCreate() {
-        nav().pos(0, 0, 0);
-        nav().faceToward(Vec3d(0, 0, 1), Vec3d(0, -1, 0));
+    
+    // Configure and start the pipeline
+    pipe.start();
 
-        // Configure and start the pipeline
-        pipe.start();
-    }
 
+}
 
 void onAnimate(double dt) {
     auto frames = pipe.wait_for_frames();
@@ -57,53 +62,32 @@ void onAnimate(double dt) {
     // Generate the pointcloud and texture mappings
     points = pc.calculate(depth);
 
-
     /* this segment actually prints the pointcloud */
     auto vertices = points.get_vertices();              // get vertices
     auto tex_coords = points.get_texture_coordinates(); // and texture coordinates
 
-
     verts.reset();
-
-    for (int i = 0; i < points.size(); i++) {
-        if (vertices[i].z) {
+    for (int i = 0; i < points.size(); i++)
+    {
+        if (vertices[i].z)
+        {
             // upload the point and texture coordinates only for points we have depth data for
-            verts.vertex(vertices[i].x, vertices[i].y, vertices[i].z);
-            verts.texCoord(tex_coords[i].u, tex_coords[i].v);
-
+            verts.vertex(vertices[i].x,vertices[i].y,vertices[i].z);
+            verts.texCoord(tex_coords[i].u,tex_coords[i].v);
+            
         }
     }
-
-
-    int xRes = color.get_width();
-    int yRes = color.get_height();
-
-    // set the filters for the texture. Default: NEAREST
-    tex.filterMag(Texture::LINEAR);
-    tex.filterMin(Texture::LINEAR);
-
-    tex.wrapS(Texture::CLAMP_TO_EDGE);
-    tex.wrapT(Texture::CLAMP_TO_EDGE);
-    // create a texture unit on the GPU
-    tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB, Texture::UBYTE);
-
-    tex.submit(color.get_data());
-
 }
 
 void onDraw(Graphics &g) {
-    g.clear();
-    g.depthTesting(true);
-    // Draws the pointcloud
-    Matrix4<float> matrix4;
+    g.clear(0,0,0);
+
+    // draw the pointcloud
     g.pushMatrix();
-    g.texture();
-    tex.bind();
+    g.color(0.5, 0.5, 0.5);
     g.scale(4);
-    g.polygonPoint();
-    g.pointSize(defaultWindow().width() / 640);
     g.draw(verts);
-    tex.unbind();
+    g.polygonPoint();
     g.popMatrix();
 
 }
