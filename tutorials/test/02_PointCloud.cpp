@@ -3,12 +3,10 @@
 #include "al/ui/al_Parameter.hpp"
 #include "al/math/al_Random.hpp"
 #include <librealsense2/rs.hpp>
-// #include "example.hpp"
 #include <iostream>
 #include <stdio.h>
 
 using namespace al;
-// using namespace rs2;
 
 class WallApp : public App {
 public:
@@ -30,7 +28,6 @@ public:
 // Texture to store the image
     Texture tex;
 
-
     WallApp() {
     }
 
@@ -42,9 +39,8 @@ public:
         pipe.start();
     }
 
+
 void onAnimate(double dt) {
-
-
     auto frames = pipe.wait_for_frames();
 
     auto color = frames.get_color_frame();
@@ -96,7 +92,6 @@ void onAnimate(double dt) {
 }
 
 void onDraw(Graphics &g) {
-
     g.clear();
     g.depthTesting(true);
     // Draws the pointcloud
@@ -110,6 +105,7 @@ void onDraw(Graphics &g) {
     g.draw(verts);
     tex.unbind();
     g.popMatrix();
+
 }
 };
 

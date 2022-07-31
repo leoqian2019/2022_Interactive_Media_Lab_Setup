@@ -7,7 +7,6 @@ using namespace al;
 
 class SphereApp : public App {
 public:
-
     // mesh to store the points we're rendering
     Mesh sphere;
 
@@ -24,15 +23,15 @@ public:
         sphere.generateNormals();
 
         nav().pullBack(4);
-
-
     }
+
 
     void onAnimate(double dt) {
         angle1 += 1. / 3;
         angle2 += M_PI / 3;
 
     }
+
 
     void onDraw(Graphics &g) {
         g.clear(0, 0, 0);
@@ -45,7 +44,6 @@ public:
 
         // draw the sphere
         g.pushMatrix();
-        // g.translate(R * cos(1 * angPos), R * sin(1 * angPos), 0);
         g.rotate(angle1, 0, 1, 0);
         g.rotate(angle2, 1, 0, 0);
         g.color(0, 0, 1);
@@ -53,9 +51,9 @@ public:
         g.draw(sphere);
 
         g.popMatrix();
-
     }
 };
+
 
 int main() {
     SphereApp app;
