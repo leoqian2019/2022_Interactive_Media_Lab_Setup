@@ -19,8 +19,6 @@ double angle1, angle2;
 
 SphereApp() {
     zpos = 10.0;
-
-
 }
 
 void onCreate() {
@@ -51,14 +49,17 @@ void onCreate() {
 }
 
 void onAnimate(double dt) {
+    // Declaring the angles of rotation
     angle1 += 1. / 3;
     angle2 += M_PI / 3;
 
 }
 
 void onDraw(Graphics &g) {
+    // Initialize the color setting
     g.clear(0,0,0);
 
+    // Enable light reflection
     g.depthTesting(true);
     g.lighting(true);
 
