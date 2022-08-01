@@ -26,8 +26,9 @@ public:
         cfg.enable_stream(RS2_STREAM_COLOR);
         // Configure and start the pipeline
         pipe.start();
-//        defaultWindow().destroy();
+        defaultWindow().destroy();
         Window window;
+        window.create();
         window.makeCurrent();
     }
 
