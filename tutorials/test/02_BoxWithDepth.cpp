@@ -35,7 +35,7 @@ WallApp() {
 }
 
 void onCreate() {
-    window.makeCurrent();
+    window.create();
 
 
     nav().pullBack(16);
