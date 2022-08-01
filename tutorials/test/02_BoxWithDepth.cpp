@@ -13,11 +13,12 @@ using namespace al;
 class WallApp : public App {
 public:
 
-
 // mesh to store the points we're rendering
-    VAOMesh verts;
-    std::vector<Color> field;
+    Mesh verts;
 
+    Window window;
+
+    al::Window::Dim dimension;
 
 // Declare pointcloud object, for calculating pointclouds and texture mappings
     rs2::pointcloud pc;
@@ -27,7 +28,7 @@ public:
 // Create a Pipeline - this serves as a top-level API for streaming and processing frames
     rs2::pipeline pipe;
 
-Texture tex;
+    Texture tex;
 
 WallApp() {
 
@@ -45,6 +46,8 @@ void onCreate() {
 }
 
 void onAnimate(double dt) {
+    // dimension = window.dimensions();
+    std::cout << window.height() << " " << window.width() << std::endl;
 
     auto frames = pipe.wait_for_frames();
 
@@ -84,8 +87,6 @@ void onAnimate(double dt) {
 }
 
 void onDraw(Graphics &g) {
-    std::cout << defaultWindow().height() << " " << defaultWindow.width() << std::endl;
-
 
     g.clear(0, 0, 0);
 
