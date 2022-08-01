@@ -43,7 +43,7 @@ public:
         // convert frame to mat
         cv::Mat image = frame_to_mat(color);
         // Update the window with new data
-        imshow("Allolib", image);
+        imshow("Alloapp", image);
 
 
     }
