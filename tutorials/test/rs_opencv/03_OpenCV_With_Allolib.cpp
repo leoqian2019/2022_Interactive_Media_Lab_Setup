@@ -26,6 +26,9 @@ public:
         cfg.enable_stream(RS2_STREAM_COLOR);
         // Configure and start the pipeline
         pipe.start();
+        defaultWindow().destroy();
+        Window window;
+        window.makeCurrent();
     }
 
 
@@ -39,11 +42,10 @@ public:
         // get color frames
         auto color = frames.get_color_frame();
 
-
         // convert frame to mat
         cv::Mat image = frame_to_mat(color);
         // Update the window with new data
-        imshow("Alloapp", image);
+        imshow("Window", image);
 
 
     }
