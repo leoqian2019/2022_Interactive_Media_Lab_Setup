@@ -46,26 +46,27 @@ public:
 
   void onCreate() {
     // pull the nav back a bit, so we can see the field being
-    // rendered at the origin.
-    // Some elements like nav need to be modified after being created
-    nav().pos(0, 0, 4);
+      // rendered at the origin.
+      // Some elements like nav need to be modified after being created
+      nav().pos(0, 0, 4);
 
-    // resize the field container
-    field.resize(xRes * yRes);
+      // resize the field container
+      field.resize(xRes * yRes);
 
-    // set the filters for the texture. Default: NEAREST
-    tex.filterMag(Texture::LINEAR);
-    tex.filterMin(Texture::LINEAR);
+      // set the filters for the texture. Default: NEAREST
+      tex.filterMag(Texture::LINEAR);
+      tex.filterMin(Texture::LINEAR);
+      tex.wrapS(Texture::CLAMP_TO_BORDER);
+      tex.wrapT(Texture::CLAMP_TO_BORDER);
+      // create a texture unit on the GPU
+      tex.create2D(xRes, yRes, Texture::RGBA32F, Texture::RGBA, Texture::FLOAT);
 
-    // create a texture unit on the GPU
-    tex.create2D(xRes, yRes, Texture::RGBA32F, Texture::RGBA, Texture::FLOAT);
-
-    // create the quad mesh to apply texture on
-    quad.primitive(Mesh::TRIANGLE_STRIP);
-    quad.vertex(-1, 1);
-    quad.vertex(-1, -1);
-    quad.vertex(1, 1);
-    quad.vertex(1, -1);
+      // create the quad mesh to apply texture on
+      quad.primitive(Mesh::TRIANGLE_STRIP);
+      quad.vertex(-1, 1);
+      quad.vertex(-1, -1);
+      quad.vertex(1, 1);
+      quad.vertex(1, -1);
 
     quad.texCoord(0, 1);
     quad.texCoord(0, 0);
