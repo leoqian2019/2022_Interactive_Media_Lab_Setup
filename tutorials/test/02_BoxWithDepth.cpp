@@ -47,7 +47,7 @@ void onCreate() {
 
 void onAnimate(double dt) {
     dimension = window.dimensions();
-    std::cout << dimension.h << " " << dimension.w << std::endl;
+    printf(dimension.w + " " + dimension.h + "\n");
 
     auto frames = pipe.wait_for_frames();
 
