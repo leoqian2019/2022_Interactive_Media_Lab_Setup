@@ -84,7 +84,7 @@ void onAnimate(double dt) {
 }
 
 void onDraw(Graphics &g) {
-    std::cout << defaultWindow().height() << " " << defaultWindow().width() << std::endl;
+    std::cout << defaultWindow().height() << " " << defaultWindow.width() << std::endl;
 
 
     g.clear(0, 0, 0);
