@@ -101,7 +101,7 @@ public:
         g.pushMatrix();
         g.texture();
         tex.bind();
-        g.scale(4);
+//        g.scale(4);
         g.polygonPoint();
         g.pointSize(defaultWindow().width() / 640);
         g.draw(verts);
