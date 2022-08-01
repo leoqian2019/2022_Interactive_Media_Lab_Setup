@@ -44,4 +44,3 @@ build/.cmake/api/*
 build/.cmake/api/v1/query/client-vscode/query.json
 tutorials/vectorField/bin/*
 tutorials/vectorField/build/*
-.DS_Store
