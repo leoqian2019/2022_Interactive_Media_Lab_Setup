@@ -6,9 +6,6 @@
 #include "cv-helpers.hpp"
 
 int main(int argc, char *argv[]) try {
-    // Declare depth colorizer for pretty visualization of depth data
-//    rs2::colorizer color_map;
-    // set window size
 
     // Declare realsense config
     rs2::config cfg;
@@ -34,13 +31,6 @@ int main(int argc, char *argv[]) try {
         data = align_to.process(data);
 
         auto color_frame = data.get_color_frame();
-
-//        // Query frame size (width and height)
-//        const int w = depth.as<rs2::video_frame>().get_width();
-//        const int h = depth.as<rs2::video_frame>().get_height();
-//
-//        // Create OpenCV matrix of size (w,h) from the colorized depth data
-//        Mat image(Size(w, h), CV_8UC3, (void *) depth.get_data(), Mat::AUTO_STEP);
 
         // convert frame to mat
         Mat image = frame_to_mat(color_frame);

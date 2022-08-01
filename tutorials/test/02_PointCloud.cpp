@@ -88,7 +88,7 @@ public:
         tex.wrapT(Texture::CLAMP_TO_EDGE);
         // create a texture unit on the GPU
         tex.create2D(xRes, yRes, Texture::RGB, Texture::RGB, Texture::UBYTE);
-
+        // use the color pixel data as texture
         tex.submit(color.get_data());
 
     }
@@ -99,9 +99,9 @@ public:
 
         // Draws the pointcloud
         g.pushMatrix();
+        // prepare texture for binding
         g.texture();
         tex.bind();
-//        g.scale(4);
         g.polygonPoint();
         g.pointSize(defaultWindow().width() / 640);
         g.draw(verts);
