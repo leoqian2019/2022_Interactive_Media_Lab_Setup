@@ -66,7 +66,7 @@ public:
         // reset the mesh object every time when the frames updates
         verts.reset();
 
-        int threshold = 5;
+        int threshold = 2;
 
         for (int i = 0; i < points.size(); i++) {
             if (vertices[i].z and vertices[i].z < threshold) {
