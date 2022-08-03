@@ -1,6 +1,9 @@
 // License: Apache 2.0. See LICENSE file in root directory.
 // Copyright(c) 2017 Intel Corporation. All Rights Reserved.
 
+/*
+ * This code uses the file provided by intel realsense as template and show the color frame captured by the intel realsense camera
+ */
 #include "librealsense2/rs.hpp" // Include RealSense Cross Platform API
 #include <opencv2/opencv.hpp>   // Include OpenCV API
 #include "cv-helpers.hpp"
@@ -21,6 +24,8 @@ int main(int argc, char *argv[]) try {
     pipe.start();
 
     using namespace cv;
+
+    // create a window with given name
     const auto window_name = "Display Image";
     namedWindow(window_name, WINDOW_NORMAL);
 
