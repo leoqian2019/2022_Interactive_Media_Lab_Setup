@@ -1,15 +1,17 @@
 #include "al/app/al_App.hpp"
 #include "al/graphics/al_Shapes.hpp"
 
-
+/*
+ * This code creates a rotating blue cube
+ */
 using namespace al;
-
 
 class SphereApp : public App {
 public:
     // mesh to store the points we're rendering
     Mesh box;
 
+    // angle of rotation
     double angle1, angle2;
 
 
@@ -18,6 +20,8 @@ public:
 
         // creating cube
         addCube(box);
+
+
         box.decompress();
         box.generateNormals();
 
