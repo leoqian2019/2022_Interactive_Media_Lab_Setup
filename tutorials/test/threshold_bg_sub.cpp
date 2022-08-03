@@ -66,6 +66,7 @@ public:
         // reset the mesh object every time when the frames updates
         verts.reset();
 
+        //This is the threshold value in meters. If object/surface is within this value, it will render.
         int threshold = 1;
 
         for (int i = 0; i < points.size(); i++) {
