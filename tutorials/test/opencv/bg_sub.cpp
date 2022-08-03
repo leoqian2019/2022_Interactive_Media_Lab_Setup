@@ -25,6 +25,7 @@ int main(int argc, char *argv[]) {
     //create Background Subtractor objects
     Ptr<BackgroundSubtractor> pBackSub;
     if (parser.get<String>("algo") == "MOG2")
+        printf("here");
         pBackSub = createBackgroundSubtractorMOG2();
     else
         pBackSub = createBackgroundSubtractorKNN();
