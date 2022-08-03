@@ -1,8 +1,10 @@
 #include "al/app/al_App.hpp"
 #include "al/graphics/al_Shapes.hpp"
-#include "al/ui/al_Parameter.hpp"
 #include <librealsense2/rs.hpp>
 
+/*
+ * This code uses intel realsense camera and draw the point cloud using Allolib
+ */
 
 using namespace al;
 
@@ -76,7 +78,7 @@ public:
             }
         }
 
-
+        // get the dimension of the color frame
         int xRes = color.get_width();
         int yRes = color.get_height();
 
@@ -102,7 +104,9 @@ public:
         // prepare texture for binding
         g.texture();
         tex.bind();
+        // draw the vertices as individual points
         g.polygonPoint();
+        // change the point size to fit the window size
         g.pointSize(defaultWindow().width() / 640);
         g.draw(verts);
         tex.unbind();
