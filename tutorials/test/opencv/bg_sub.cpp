@@ -15,7 +15,7 @@ const char *params
 
 int main(int argc, char *argv[]) {
     CommandLineParser parser(argc, argv, params);
-    parser.printMessage();
+//    parser.printMessage();
     parser.about("This program shows how to use background subtraction methods provided by "
                  " OpenCV. You can process both videos and images.\n");
     if (parser.has("help")) {
