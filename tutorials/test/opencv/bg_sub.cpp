@@ -25,10 +25,13 @@ int main(int argc, char *argv[]) {
     //create Background Subtractor objects
     Ptr<BackgroundSubtractor> pBackSub;
     if (parser.get<String>("algo") == "MOG2") {
-        printf("here");
+//        printf("here");
         pBackSub = createBackgroundSubtractorMOG2();
-    } else
+    } else {
+        printf("here");
         pBackSub = createBackgroundSubtractorKNN();
+    }
+
     VideoCapture capture(samples::findFile(parser.get<String>("input")));
     if (!capture.isOpened()) {
         //error in opening the video input
