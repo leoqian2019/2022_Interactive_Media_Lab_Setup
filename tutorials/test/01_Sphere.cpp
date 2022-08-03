@@ -1,15 +1,14 @@
 #include "al/app/al_App.hpp"
 #include "al/graphics/al_Shapes.hpp"
-#include "al/ui/al_Parameter.hpp"
-#include "al/math/al_Random.hpp"
 
+/*
+ * This code creates a rotating sphere with two quads around it
+ */
 using namespace al;
-// using namespace rs2;
 
 class SphereApp : public App {
 public:
-// scale of the vector field
-float zpos;
+
 
 // mesh to store the points we're rendering
 Mesh sphere;
@@ -18,14 +17,13 @@ Mesh wall[2];
 double angle1, angle2;
 
 SphereApp() {
-    zpos = 10.0;
 }
 
 void onCreate() {
     angle1 = angle2 = 0;
-    int Nv;
+
     // Prepare mesh to draw a cube
-    Nv = addSphere(sphere,2,36);
+    addSphere(sphere, 2, 36);
 
     float f = 1.0;
     sphere.color(HSV(f*0.1+0.2,1,1));
@@ -34,13 +32,13 @@ void onCreate() {
     sphere.generateNormals();
 
     // add two rectangles
-    Nv = addRect(wall[0],0,0,6,4);
-    wall[0].color(HSV(f*0.1+0.2,1,1));
+    addRect(wall[0], 0, 0, 6, 4);
+    wall[0].color(HSV(f * 0.1 + 0.2, 1, 1));
     wall[0].decompress();
     wall[0].generateNormals();
 
-    Nv = addRect(wall[1],0,0,6,4);
-    wall[1].color(HSV(f*0.1+0.2,1,1));
+    addRect(wall[1], 0, 0, 6, 4);
+    wall[1].color(HSV(f * 0.1 + 0.2, 1, 1));
     wall[1].decompress();
     wall[1].generateNormals();
 
