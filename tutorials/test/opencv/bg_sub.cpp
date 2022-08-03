@@ -15,6 +15,7 @@ const char *params
 
 int main(int argc, char *argv[]) {
     CommandLineParser parser(argc, argv, params);
+//    parser.printMessage();
     parser.about("This program shows how to use background subtraction methods provided by "
                  " OpenCV. You can process both videos and images.\n");
     if (parser.has("help")) {
@@ -23,10 +24,14 @@ int main(int argc, char *argv[]) {
     }
     //create Background Subtractor objects
     Ptr<BackgroundSubtractor> pBackSub;
-    if (parser.get<String>("algo") == "MOG2")
+    if (parser.get<String>("algo") == "MOG2") {
+//        printf("here");
         pBackSub = createBackgroundSubtractorMOG2();
-    else
+    } else {
+        printf("here");
         pBackSub = createBackgroundSubtractorKNN();
+    }
+
     VideoCapture capture(samples::findFile(parser.get<String>("input")));
     if (!capture.isOpened()) {
         //error in opening the video input
