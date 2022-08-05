@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 
         data = align_to.process(data);
 
-        auto color_frame = data.get_color_frame();
+        auto color_frame = data.get_depth_frame();
         // convert frame to mat
         frame = frame_to_mat(color_frame);
 
