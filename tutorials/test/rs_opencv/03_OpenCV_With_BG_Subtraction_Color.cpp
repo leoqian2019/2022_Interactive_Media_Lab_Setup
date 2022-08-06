@@ -1,14 +1,13 @@
 #include <iostream>
 #include <sstream>
 #include <opencv2/imgcodecs.hpp>
-#include <opencv2/imgproc.hpp>
-#include <opencv2/videoio.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/video.hpp>
 #include "librealsense2/rs.hpp" // Include RealSense Cross Platform API
-#include <opencv2/opencv.hpp>   // Include OpenCV API
 #include "cv-helpers.hpp"
-
+/*
+ * this file runs the background subtractor of oepnCV using color frame from intel realsense camera
+ */
 using namespace cv;
 using namespace std;
 const char *params

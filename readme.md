@@ -66,4 +66,18 @@ It will then run the application.
 The files created by myself are all stored in tutorials/test. You guys can feel free to add more files and use run.sh to
 build and test them
 
+### Demo files
 
+For the purpose of testing what we know about allolib, intel realsense, and opencv, we created several demo applications
+all located in tutorial/test folder
+
+1. 01_Box.cpp: creates a blue rotating box
+2. 01_Sphere.cpp: creates a rotating sphere with two quads around it
+3. 02_PointCloud: draw the 3d space cpatured by the camera using allolib
+4. rs_opencv/03_OpenCV_With_ColorFrame.cpp: using opencv to display color frames of the camera
+5. rs_opencv/03_OpenCV_With_BG_Subtraction_Color.cpp: running the default background subtractor of opencv on the color
+   frame of the camera
+6. rs_opencv/03_OpenCV_With_BG_Subtraction_Dpeth.cpp: running the default background subtractor using the depth frame
+
+In the rs_opencv folder, there's a `run_opencv.sh` file which by putting the cpp file name without `.cpp`, you will be
+able to get an executable with the same name as the file as long as realsense and opencv are installed correctly
